@@ -1,0 +1,110 @@
+<!doctype html>
+
+
+<html lang="en">
+<h1>Random Quote Machine</h1>
+
+<head>
+<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+  <title>BASIC RANDOM QUOTE GENERATOR</title>
+<script>
+  let quoteBank = [
+        {
+        quote: "Facts do not cease to exist because they are ignored.",
+        author: "Aldous Huxley"
+        }, {
+        quote: "First off, I am 35 years old, I am divorced, and I live in a van down by the river. ...",
+        author: "Chris Farley"
+        }, {
+        quote: "It's time for the human race to enter the solar system",
+        author: "George Bush"
+        }, {
+        quote: "It is hard to fail, but it is worse never to have tried to succeed.",
+        author: "Theodore Roosevelt"
+        }, {
+        quote: "The only man who never makes mistakes is the man who never does anything",
+        author: "Theodore Roosevelet"
+        }, {
+        quote: "Everything in life is luck.",
+        author: "Donald Trump"
+        }, {
+        quote: "They have the Internet on computers, now?",
+        author: "Homer Simpson"
+        }
+  ]
+  window.onload = init;
+  function init() {
+  generateQuote()
+
+  }
+  function generateQuote(){
+  
+       let quoteSize = quoteBank.length;
+       let randomIndex = Math.floor(Math.random() * quoteSize);
+       let randomQuoteData = quoteBank[randomIndex];
+
+       let twitterLink ="https://twitter.com/intent/tweet?hashtags=quotes&amp;related=freecodecamp&amp;text="
+       let quoteInApiFormat = randomQuoteData.quote.replace(/ /g, "%20");
+       twitterLink += quoteInApiFormat
+       let authorInApiFormat = randomQuoteData.author.replace(/ /g, "%20");
+       twitterLink += " - " + authorInApiFormat
+
+   
+    document.getElementById("tweet-quote").href=twitterLink;
+    document.getElementById("text").innerText = randomQuoteData.quote;
+    document.getElementById("author").innerText = randomQuoteData.author;
+  }
+
+  </script>
+  <style>
+   * {
+      font-size: 1.5rem; 
+      margin: 20px 20px 20px;
+      text-align: center; 
+
+   }
+   h1{
+          font-size:1.0rem;
+          text-align:center;
+   }
+
+</style>
+</head>
+
+
+<body>
+
+<script src ="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js">
+</script>
+
+
+<wrapper id="quote-box"> 
+
+
+<div style="background-color: #cfc ; padding: 50px; border: 5px solid green;">
+
+<div id="text">
+
+</div>
+
+<div id="author">
+
+</div>
+
+<button class="btn btn-primary" id="new-quote" onCLick="generateQuote();">New Quote</button>
+
+
+<a href="#" id="tweet-quote" target="_blank" class="btn btn-success">Tweet Quote</a>
+
+
+
+
+</div></wrapper>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+</body>
+
+</html>
